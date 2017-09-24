@@ -87,7 +87,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-3 col-xs-10 col-xs-offset-1 header-content-phone">
+          <div class="col-md-4 col-sm-3 col-xs-10 col-lg-offset-0 col-xs-offset-1 header-content-phone">
             <img src="img/iphonex2.png">
           </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="row">
           <div class="col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-6 footer-info">
             <a><i class="fa fa-location-arrow" aria-hidden="true"></i> Detroit, United States</a>
-            <a><i class="fa fa-question-circle" aria-hidden="true"></i> help - info@realism.io</a>
+            <a><i class="fa fa-question-circle" aria-hidden="true"></i> help - info@quicyte.io</a>
           </div>
           <div class="col-md-2 col-sm-3 col-sm-offset-2 col-xs-6 footer-menu">
             <p>Products</p>
@@ -178,18 +178,34 @@
           lng: 2.295,
           zoom: 1
         });
-        var dataArray = 'test.json';
-        console.log(dataArray);
-        $.getJSON(dataArray, function(data){
+        var dataArray = 'http://succ.pxtst.com/status';
+        setInterval(function(){
+          $.getJSON(dataArray, function(data){
+            console.log(dataArray);
+            for(i=0;i<data.dataEntries.length;i++){
+              var element = data.dataEntries[i];
+              console.log('dick');
+              var contentHolder = '<p>Threat level:' + element['riskLevel'] + '</br>mac address: ' + element['macAddress'] + '</br>longitude:' + element['longitude'] + '</br>latitude:' + element['latitude'] + '</br>device name:'+ element['deviceName']+ "</p>";
+              mapObj.addMarker({
+                lat: element['latitude'],
+                lng: element['longitude'],
+                title: element['macAddress'],
+                infoWindow: {
+                  content: contentHolder
+                }
+              });
+            };
+          })}, 5000);
+        var locationArray = 'test1.json';
+        $.getJSON(locationArray, function(data){
           console.log('dick1');
           for(i=0;i<data.dataEntries.length;i++){
             var element = data.dataEntries[i];
             console.log('dick');
-            var contentHolder = '<p>Threat level: high</br>mac address: ' + element['macAdress'] + '</br>longitude:' + element['longitude'] + '</br>latitude:' + element['latitude'] + "</p>";
+            var contentHolder = '<p>Type: hospital</br>Name:' + element['name'] + '</br>Danger level: medium' +'</br>longitude:'+ element['longitude'] + '</br>latitude:' + element['latitude'] + "</p>";
             mapObj.addMarker({
               lat: element['latitude'],
               lng: element['longitude'],
-              title: element['macAdress'],
               infoWindow: {
                 content: contentHolder
               }

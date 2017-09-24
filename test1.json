@@ -1,14 +1,14 @@
 {
  "dataEntries": [
     {
-      "latitude": 32.7539,
-      "longitude": -117.165,
+      "latitude": 36,
+      "longitude": -118,
       "macAdress": 1324,
       "name": "er"
     },
     {
-      "latitude": 41.8781,
-      "longitude": 87.6298,
+      "latitude": 54,
+      "longitude": 80,
       "macAdress": 4321,
       "name": "her"
     }

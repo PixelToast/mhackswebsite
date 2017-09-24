@@ -7,7 +7,7 @@ console.log(window);
 //wolfram alpha js API
 var waAppId = '8LWE32-V3GQQ9W69R';
 var waClient = new wajs(waAppId);
-var queryString = ['Shriners Hospitals for Children','university of michigan hospital', 'new york hospital','london hospital'];
+var queryString = ['shriners hospitals for children','university of michigan hospital', 'new york hospital','london hospital'];
 var setData = 0;
 var finalData = 0;
 
