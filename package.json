@@ -1,0 +1,31 @@
+{
+  "name": "realismwebapp",
+  "version": "1.0.0",
+  "description": "webapp for Realism",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack-dev-server --hot --inline",
+    "watch": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "Steven Wang",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-add-module-exports": "*",
+    "babel-plugin-transform-class-properties": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-preset-es2015": "^*",
+    "babel-preset-stage-0": "^*",
+    "html-webpack-plugin": "*",
+    "raw-loader": "^0.5.1",
+    "wajs": "0.0.17",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
+}

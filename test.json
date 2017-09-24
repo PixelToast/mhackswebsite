@@ -1,0 +1,14 @@
+{
+ "dataEntries": [
+    {
+      "latitude": 42.3314,
+      "longitude": 83.0458,
+      "macAdress": 1324,
+    }
+    {
+      "latitude": 41.8781,
+      "longitude": 87.6298,
+      "macAdress": 4321,
+    }
+ ]
+}
