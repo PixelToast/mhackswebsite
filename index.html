@@ -72,7 +72,7 @@
     <header class="container-fluid">
       <div class="header-content">
         <div class="row">
-          <div class="col-md-7 col-sm-7">
+          <div class="col-md-7 col-sm-7 col-xs-11">
             <div class="header-content-inner">
               <h1>Creating peer to peer security</h1>
               <p>
@@ -87,7 +87,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-3 header-content-phone">
+          <div class="col-md-4 col-sm-3 col-xs-10 col-xs-offset-1 header-content-phone">
             <img src="img/iphonex2.png">
           </div>
         </div>
@@ -95,7 +95,7 @@
     </header>
     <section class="container-fluid" id="maps">
       <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-10 col-sm-offset-1 content">
           <h2>Live Malware Detection Platform</h2>
           <p>We can instantly detect wireless over the air attacks, protecting you and everyone else in your area before any damdge can be done. See any marker below for most recent wireless over the air attack attempts</p>
           <div id="map"></div>
@@ -108,23 +108,15 @@
           <div class="col-sm-6 col-xs-12 content-outer-1">
             <div class="content-inner-1">
               <img src="img/safeIcon.png" type="image/png">
-              <h5>No more accidents</h5>
-              <p>Never have an accident again. No matter what happens
-              during your lab-shattered glass, extreme infernos, super
-              bacteria, nuclear fallout-you will be completely safe. It's
-              real life, just virtual. This way, you'll be able to learn form
-              your mistakes and explore and iterate again and again</p>
+              <h5>Instant protection</h5>
+              <p>Once we detect maleware attacking a device using our custom algorithim, we will automatically protect anyone else in the area in danger of a wireless over the air attack. And the best part is, out algorithim gets smarter everytime, so you'll only be safer as time goes on.</p>
             </div>
           </div>
           <div class="col-sm-6 col-xs-12 content-outer-2">
             <div class="content-inner-2">
               <img src="img/moleculeIcon.png" type="image/png">
-              <h6>Real reactions</h6>
-              <p>Lifelike chemical reactions and simulation. We simulate 
-              everything with math algorithms and forumlas so your lab
-              data will be perfect for conducting any lab writeups or just
-              preparing for the actual lab. We even have things like heat
-              simulation, so all ascepts are covered. </p>
+              <h6>Cross platform</h6>
+              <p>Android user? Windows user? No worries. Our protection platform can work on any vunerable device, and will provide you with the maximum security. We also host everything on the cloud, to provide another layer of security that also allows us to protect you anywhere around the world.</p>
             </div>
           </div>
         </div>
@@ -137,10 +129,10 @@
             <div class="row">
               <div class="col-md-6 content-outer-1">
                 <h6>Ready to get started?</h6>
-                <p>Try out a Realism science lab for free in VR</p>
+                <p>Download our app in the app store now!</p>
               </div>
               <div class="col-md-6 content-outer-2">
-                <a class="btn btn-default btn-space" href="dashboard/register" style="background-color:#FF6A98; color:#FFEBDE;">Create account now</a>
+                <a class="btn btn-default btn-space" href="dashboard/register" style="background-color:#FF6A98; color:#FFEBDE;">Download now</a>
                 <a class="btn btn-default btn-space" href="contact.html" style="color: #C500FF;">Contact Sales</a>
               </div>
             </div>
@@ -186,19 +178,20 @@
           lng: 2.295,
           zoom: 1
         });
-        var dataArray = "test.json";
-        console.log('dick2');
+        var dataArray = 'test.json';
+        console.log(dataArray);
         $.getJSON(dataArray, function(data){
           console.log('dick1');
           for(i=0;i<data.dataEntries.length;i++){
             var element = data.dataEntries[i];
             console.log('dick');
+            var contentHolder = '<p>Threat level: high</br>mac address: ' + element['macAdress'] + '</br>longitude:' + element['longitude'] + '</br>latitude:' + element['latitude'] + "</p>";
             mapObj.addMarker({
               lat: element['latitude'],
               lng: element['longitude'],
-              title: element['name'],
+              title: element['macAdress'],
               infoWindow: {
-                content: '<p>HTML Content</p>'
+                content: contentHolder
               }
             });
           };

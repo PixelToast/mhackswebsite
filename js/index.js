@@ -7,29 +7,27 @@ console.log(window);
 //wolfram alpha js API
 var waAppId = '8LWE32-V3GQQ9W69R';
 var waClient = new wajs(waAppId);
-var queryString = 'san diego hospital';
-var queryOptions = {
-  format: 'plaintext',
-  units: 'metric'
-};
+var queryString = ['Shriners Hospitals for Children','university of michigan hospital', 'new york hospital','london hospital'];
 var setData = 0;
 var finalData = 0;
-waClient.query(queryString).then(function(qr) {
-  setData = qr.toJson();
-  console.log('going');
-  var locationArray = [];
-  finalData = JSON.parse(setData);
-  console.log(finalData);
-  for(var i=0;i<Object.keys(finalData).length;i++){
-    console.log('going');
-    if(finalData.pod[i].title == "Map"){
-      locationArray[i] = finalData.pod[i].infos['0'].info['0'].link['0'].url;
-      console.log(locationArray[i]);
-      return locationURL(locationArray[i]);
-    }
-  }
-});
 
+for(var j = 0;j<queryString.length;j++){
+  waClient.query(queryString[j]).then(function(qr) {
+    setData = qr.toJson();
+    console.log('going');
+    var locationArray = [];
+    finalData = JSON.parse(setData);
+    console.log(finalData);
+    for(var i=0;i<Object.keys(finalData).length;i++){
+      console.log('going');
+      if(finalData.pod[i].title == "Map"){
+        locationArray[i] = finalData.pod[i].infos['0'].info['0'].link['0'].url;
+        console.log(locationArray[i]);
+        return locationURL(locationArray[i]);
+      }
+    }
+  });
+}
 function locationURL(url){
   console.log('going');
   var readLength = url.length - breakpoint;

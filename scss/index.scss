@@ -257,14 +257,14 @@ header img{
       padding-bottom: 10%;
     }
   .header-content-inner{
-    margin-top:36%;
+    margin-top:33%;
     margin-left: 15%;
     p {
       max-width:450px;
     }
   }
   .header-content-phone{
-    margin-top: 13%;
+    margin-top: 17%;
     margin-left: 7%;
   }
 }
@@ -275,17 +275,12 @@ header img{
 }
 @media (max-width: 670px) {
   header{
-    -webkit-clip-path: polygon(0 0, 0 590px, 650px 450px, 650px 0);
-    max-height: 600px;
+    -webkit-clip-path: polygon(0 0, 0 650px, 700px 500px, 700px 0);
+    max-height: 700px;
     width: 100%;
   }
-  .header-content{
-    margin-top: 90px;
-    margin-left: 20px;
-    padding-top: 53px;
-    max-width: 300px;
-  }
   .header-content-inner{
+    margin-left: 5%;
     p {
       max-width:290px;
     }
@@ -320,6 +315,17 @@ header img{
     text-align: center;
     max-width: 80%;
   }
+}
+@media (max-width: 670px) {
+ #maps{
+
+ }
+ #maps p{
+  max-width: 100%;
+ }
+ #maps .content{
+    margin-top: -50%;
+ }
 }
 #features {
   background-color: #FFF5FA;
