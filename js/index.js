@@ -4,68 +4,60 @@ var wajs = require('wajs')
 "use strict"; // Start of use strict
 console.log(window);
 
-//wolfram alpha API
+//wolfram alpha js API
 var waAppId = '8LWE32-V3GQQ9W69R';
 var waClient = new wajs(waAppId);
-var queryString = 'university of michigan hospital';
+var queryString = 'san diego hospital';
 var queryOptions = {
   format: 'plaintext',
   units: 'metric'
 };
 var setData = 0;
+var finalData = 0;
 waClient.query(queryString).then(function(qr) {
   setData = qr.toJson();
-  console.log(setData);
+  console.log('going');
+  var locationArray = [];
+  finalData = JSON.parse(setData);
+  console.log(finalData);
+  for(var i=0;i<Object.keys(finalData).length;i++){
+    console.log('going');
+    if(finalData.pod[i].title == "Map"){
+      locationArray[i] = finalData.pod[i].infos['0'].info['0'].link['0'].url;
+      console.log(locationArray[i]);
+      return locationURL(locationArray[i]);
+    }
+  }
 });
 
-var locationArray = 0;
-for(var i=0;i<setData.length;i++){
-  if(setData['title'] == 'maps'){
-    locationArray[i] = setData.title.infos.links['url'];
-  }
-}
- 
 function locationURL(url){
+  console.log('going');
+  var readLength = url.length - breakpoint;
   var longitude = 0;
   var latitude = 0;
   var breakpoint = url.indexOf('%');
-  for(var i=breakpoint;i<breakpoint;i--){
-    if(url.indexOf(i)=='='){
-      longitude = url.substring(i,breakpoint)
+  for(var i=breakpoint;i>0;i--){
+    console.log('going');
+    if(url.charAt(i-1)=='='){
+      longitude = url.substring(i,breakpoint);
+        for(var i=breakpoint+3;i<url.length;i++){
+          console.log('going');
+          if(url.charAt(i)=='&'){
+            latitude = url.substring(breakpoint+3,i);
+            console.log(latitude);
+            console.log(longitude);
+            return latitude, longitude;
+          }
+        }
     }
   }
-  for(var i=breakpoint+3;i>breakpoint;i++){
-    if(url.indexOf(i)=='&'){
-      latitude = url.substring(breakpoint+3,i);
-    }
-  }
-  console.log(longitude,latitude);
 }
 
-locationURL("http://maps.google.com?ie=UTF8&z=12&t=k&ll=42.2848%2C-83.7318&q=42.2848%20N%2C%2083.7318%20W");
-
-
+//
 $(document).ready(function(){
     $(this).scrollTop(0);
 });
 $("#select1").focus(function(){
-});
-
-
-
-//check login
-var loginLink = "mamba/api/checklogin";
-var test = "test.json";
-$.getJSON(loginLink, function(data) {
-  var verifyLogin = data['logged-in'];
-  console.log(verifyLogin);
-  if (verifyLogin == true) {
-    console.log(data);
-    $('#logout').removeClass('hidden');
-    $('#dashboard').removeClass('hidden');
-    $('#login-button').addClass('hidden');
-    $('#register-button').addClass('hidden');
-  }
 });
 
 $(document).on('click', 'a.page-scroll', function(event) {
